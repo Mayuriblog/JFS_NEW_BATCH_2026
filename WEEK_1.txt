@@ -1,0 +1,395 @@
+Week 1 – Programming Basics (Java)
+1️⃣ Java Installation (JDK)
+What is Java?
+
+Java is a high-level, object-oriented programming language used for:
+
+Web applications
+
+Android apps
+
+Enterprise software
+
+Backend development
+
+What is JDK?
+
+JDK (Java Development Kit) is the package needed to develop and run Java programs.
+
+It includes:
+
+JRE (Java Runtime Environment) → Runs Java programs
+
+JVM (Java Virtual Machine) → Executes compiled Java bytecode
+
+Development tools like javac
+
+Java Program Flow
+Java Code (.java file)
+        ↓
+Compiled by javac
+        ↓
+Bytecode (.class file)
+        ↓
+Executed by JVM
+Basic Java Program Example
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+
+}
+
+Explanation:
+
+public class HelloWorld → class declaration
+
+main() → program starting point
+
+System.out.println() → prints output
+
+Output
+
+Hello, Java!
+2️⃣ Variables and Data Types
+What is a Variable?
+
+A variable is a container that stores data.
+
+Example:
+
+int age = 20;
+
+Here:
+
+int → data type
+
+age → variable name
+
+20 → value
+
+Java Data Types
+
+Two types:
+
+1️⃣ Primitive Data Types
+Type	Description	Example
+int	Integer numbers	10
+double	Decimal numbers	10.5
+char	Single character	'A'
+boolean	true or false	true
+
+Example:
+
+int age = 21;
+double price = 199.99;
+char grade = 'A';
+boolean isStudent = true;
+
+System.out.println(age);
+System.out.println(price);
+System.out.println(grade);
+System.out.println(isStudent);
+
+Output
+
+21
+199.99
+A
+true
+2️⃣ Non-Primitive Data Types
+
+Examples:
+
+String
+
+Arrays
+
+Classes
+
+Example:
+
+String name = "Rahul";
+System.out.println(name);
+
+Output
+
+Rahul
+3️⃣ Operators
+
+Operators perform operations on variables and values.
+
+Types of Operators
+1️⃣ Arithmetic Operators
+Operator	Meaning
++	Addition
+-	Subtraction
+*	Multiplication
+/	Division
+%	Modulus
+
+Example
+
+int a = 10;
+int b = 5;
+
+System.out.println(a + b);
+System.out.println(a - b);
+System.out.println(a * b);
+System.out.println(a / b);
+System.out.println(a % b);
+
+Output
+
+15
+5
+50
+2
+0
+2️⃣ Relational Operators
+
+Used for comparison.
+
+Operator	Meaning
+==	Equal
+!=	Not equal
+>	Greater
+<	Less
+>=	Greater or equal
+<=	Less or equal
+
+Example
+
+int a = 10;
+int b = 20;
+
+System.out.println(a > b);
+System.out.println(a < b);
+System.out.println(a == b);
+
+Output
+
+false
+true
+false
+3️⃣ Logical Operators
+Operator	Meaning
+&&	AND
+||	OR
+!	NOT
+
+Example
+
+int age = 18;
+
+System.out.println(age > 16 && age < 25);
+
+Output
+
+true
+4️⃣ Input / Output in Java
+Output
+
+Use:
+
+System.out.println();
+
+Example
+
+System.out.println("Welcome to Java");
+Input (Scanner Class)
+
+To take input from user we use Scanner class.
+
+Example
+
+import java.util.Scanner;
+
+public class InputExample {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+
+        System.out.println("Hello " + name);
+    }
+}
+
+Output
+
+Enter your name: Rahul
+Hello Rahul
+5️⃣ Control Statements
+
+Control statements allow decision making in programs.
+
+1️⃣ if Statement
+
+Used when one condition is checked.
+
+Example
+
+int age = 18;
+
+if(age >= 18) {
+    System.out.println("You can vote");
+}
+
+Output
+
+You can vote
+2️⃣ if-else Statement
+
+Used for two conditions.
+
+Example
+
+int age = 16;
+
+if(age >= 18) {
+    System.out.println("Eligible to vote");
+} else {
+    System.out.println("Not eligible");
+}
+
+Output
+
+Not eligible
+3️⃣ else-if Ladder
+
+Used when there are multiple conditions.
+
+Example
+
+int marks = 75;
+
+if(marks >= 90) {
+    System.out.println("Grade A");
+}
+else if(marks >= 70) {
+    System.out.println("Grade B");
+}
+else {
+    System.out.println("Grade C");
+}
+
+Output
+
+Grade B
+4️⃣ Switch Statement
+
+Used for multiple cases.
+
+Example
+
+int day = 3;
+
+switch(day) {
+
+    case 1:
+        System.out.println("Monday");
+        break;
+
+    case 2:
+        System.out.println("Tuesday");
+        break;
+
+    case 3:
+        System.out.println("Wednesday");
+        break;
+
+    default:
+        System.out.println("Invalid day");
+}
+
+Output
+
+Wednesday
+Practice Programs
+1️⃣ Calculator Program
+import java.util.Scanner;
+
+public class Calculator {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        int a = sc.nextInt();
+
+        System.out.print("Enter second number: ");
+        int b = sc.nextInt();
+
+        System.out.println("Addition = " + (a + b));
+        System.out.println("Subtraction = " + (a - b));
+        System.out.println("Multiplication = " + (a * b));
+        System.out.println("Division = " + (a / b));
+    }
+}
+
+Example Output
+
+Enter first number: 10
+Enter second number: 5
+
+Addition = 15
+Subtraction = 5
+Multiplication = 50
+Division = 2
+2️⃣ Even or Odd Number
+import java.util.Scanner;
+
+public class EvenOdd {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number: ");
+        int num = sc.nextInt();
+
+        if(num % 2 == 0) {
+            System.out.println("Even number");
+        } else {
+            System.out.println("Odd number");
+        }
+
+    }
+}
+
+Output
+
+Enter number: 8
+Even number
+3️⃣ Largest of Two Numbers
+import java.util.Scanner;
+
+public class Largest {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        if(a > b) {
+            System.out.println("A is larger");
+        } else {
+            System.out.println("B is larger");
+        }
+
+    }
+}
+End of Week 1 You Should Know
+
+✔ Write basic Java programs
+✔ Understand variables and data types
+✔ Use operators
+✔ Take input from user
+✔ Use decision making statements
