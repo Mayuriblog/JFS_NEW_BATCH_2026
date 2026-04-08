@@ -1,0 +1,519 @@
+📘 1. ArrayList (AL)
+
+Question:
+Design a system to store student marks where frequent access by index is required.
+
+Description:
+Use an ArrayList to store student marks. Since ArrayList provides fast random access using index, it is suitable when we need to retrieve or update marks quickly. It also allows duplicate values, which is useful when multiple students can have the same marks.
+
+📘 2. LinkedList (LL)
+
+Question:
+Design a browser history system with back and forward navigation.
+
+Description:
+Use a LinkedList to store visited pages. It allows easy insertion and deletion of elements from both ends. When the user clicks back, the last page can be removed efficiently, making LinkedList ideal for dynamic navigation systems.
+
+📘 3. Stack
+
+Question:
+Design an undo/redo feature in a text editor.
+
+Description:
+Use a Stack to store actions performed by the user. Since Stack follows LIFO (Last In First Out), the most recent action is undone first. This makes it perfect for implementing undo/redo operations.
+
+📘 4. HashSet (HS)
+
+Question:
+Design a system to store unique user email IDs during registration.
+
+Description:
+Use a HashSet to ensure that duplicate email IDs are not stored. HashSet does not allow duplicates and provides fast insertion and lookup, making it ideal for validating unique user data.
+
+📘 5. LinkedHashSet (LHS)
+
+Question:
+Design a system to maintain unique login history while preserving order.
+
+Description:
+Use a LinkedHashSet to store login entries. It maintains insertion order while also ensuring uniqueness. This is useful when the order of user actions must be preserved without duplicates.
+
+📘 6. TreeSet (TS)
+
+Question:
+Design a leaderboard system that displays scores in sorted order.
+
+Description:
+Use a TreeSet to store scores. It automatically sorts elements in ascending order and does not allow duplicates. This makes it suitable for ranking systems and leaderboards.
+
+📘 7. PriorityQueue (PQ)
+
+Question:
+Design a hospital emergency system where patients are treated based on priority.
+
+Description:
+Use a PriorityQueue to manage patients. Patients with higher priority (critical condition) are treated first. The queue automatically orders elements based on priority, making it ideal for scheduling tasks.
+
+📘 8. ArrayDeque (ADQ)
+
+Question:
+Design a system that supports both stack and queue operations (undo and redo).
+
+Description:
+Use an ArrayDeque to allow insertion and deletion from both ends. It can function as both a stack and a queue, making it efficient for systems requiring dual behavior like undo/redo operations.
+
+📘 9. HashMap (HM)
+
+Question:
+Design a student database system to store roll number and name.
+
+Description:
+Use a HashMap to store data in key-value pairs (roll number → name). It allows fast retrieval based on keys and supports one null key. It is widely used for database-like storage.
+
+📘 10. LinkedHashMap (LHM)
+
+Question:
+Design a cache system that maintains insertion order.
+
+Description:
+Use a LinkedHashMap to store cache entries. It maintains the order in which elements are inserted, making it useful for implementing caching mechanisms like LRU (Least Recently Used).
+
+📘 11. TreeMap (TM)
+
+Question:
+Design a dictionary application where words are stored in sorted order.
+
+Description:
+Use a TreeMap to store words and their meanings. It keeps keys sorted automatically, which helps in efficient searching and ordered display of data.
+
+📘 12. Hashtable
+
+Question:
+Design a multi-threaded application where shared data must be thread-safe.
+
+Description:
+Use a Hashtable to store shared data safely across multiple threads. It is synchronized by default, ensuring thread safety, though it is slower compared to HashMap.
+
+🧠 FINAL QUICK REVISION
+Short	Collection	Real-Time Use
+AL	ArrayList	Student marks
+LL	LinkedList	Browser history
+ST	Stack	Undo/Redo
+HS	HashSet	Unique emails
+LHS	LinkedHashSet	Ordered unique logs
+TS	TreeSet	Leaderboard
+PQ	PriorityQueue	Task scheduling
+ADQ	ArrayDeque	Stack + Queue
+HM	HashMap	Database
+LHM	LinkedHashMap	Cache
+TM	TreeMap	Dictionary
+HT	Hashtable	Thread-safe storage
+----------------------------------------------------------
+Here are 🔥 tricky real-time interview scenarios on Java Collections — these are exactly the kind of questions interviewers use to test understanding (not just syntax) 👇
+
+🧠 1. Duplicate Detection (HashSet Trick)
+
+Scenario:
+You are given a list of user IDs. Detect duplicates efficiently.
+
+Twist:
+You are NOT allowed to use extra nested loops.
+
+Expected Thinking:
+Use HashSet → check add() return value.
+
+Set<Integer> set = new HashSet<>();
+for (int id : list) {
+    if (!set.add(id)) {
+        System.out.println("Duplicate: " + id);
+    }
+}
+
+👉 Trick: add() returns false if duplicate
+
+🧠 2. Maintain Order + Remove Duplicates
+
+Scenario:
+Given a list of search history, remove duplicates but keep insertion order.
+
+Expected Answer:
+Use LinkedHashSet
+
+List<String> list = Arrays.asList("A","B","A","C");
+Set<String> set = new LinkedHashSet<>(list);
+System.out.println(set);
+
+👉 Why not HashSet? → order lost ❌
+
+🧠 3. Top K Elements (Very Popular 🔥)
+
+Scenario:
+Find top 3 highest scores from a large dataset.
+
+Expected Answer:
+Use PriorityQueue (Min Heap)
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+for (int score : scores) {
+    pq.add(score);
+    if (pq.size() > 3) {
+        pq.poll(); // remove smallest
+    }
+}
+System.out.println(pq);
+
+👉 Trick: Keep size fixed
+
+🧠 4. LRU Cache Implementation
+
+Scenario:
+Design a cache where least recently used item is removed first.
+
+Expected Answer:
+Use LinkedHashMap
+
+LinkedHashMap<Integer, String> map =
+    new LinkedHashMap<>(16, 0.75f, true);
+
+map.put(1, "A");
+map.put(2, "B");
+map.get(1); // makes 1 recently used
+
+👉 Trick: access-order constructor
+
+🧠 5. Frequency Count (Most Asked)
+
+Scenario:
+Count frequency of words in a paragraph.
+
+Expected Answer:
+Use HashMap
+
+Map<String, Integer> map = new HashMap<>();
+
+for (String word : words) {
+    map.put(word, map.getOrDefault(word, 0) + 1);
+}
+
+👉 Trick: getOrDefault()
+
+🧠 6. First Non-Repeating Character
+
+Scenario:
+Find first non-repeating character in a string.
+
+Expected Answer:
+Use LinkedHashMap
+
+Map<Character, Integer> map = new LinkedHashMap<>();
+
+for (char c : str.toCharArray()) {
+    map.put(c, map.getOrDefault(c, 0) + 1);
+}
+
+for (char c : map.keySet()) {
+    if (map.get(c) == 1) {
+        System.out.println(c);
+        break;
+    }
+}
+
+👉 Trick: order + frequency
+
+🧠 7. Sort Custom Objects
+
+Scenario:
+Sort students by marks.
+
+Expected Answer:
+Use TreeSet or Collections.sort() with Comparator
+
+TreeSet<Integer> set = new TreeSet<>(Comparator.reverseOrder());
+
+👉 Trick: custom sorting
+
+🧠 8. Thread-Safe Collection
+
+Scenario:
+Multiple threads updating same data.
+
+Expected Answer:
+Use Hashtable or Collections.synchronizedMap()
+
+Map<Integer, String> map = Collections.synchronizedMap(new HashMap<>());
+
+👉 Trick: HashMap is NOT thread-safe ❌
+
+🧠 9. Implement Stack Using Queue
+
+Scenario:
+You are only allowed to use Queue, implement Stack.
+
+👉 Concept: push costly / pop costly
+
+Queue<Integer> q = new LinkedList<>();
+
+q.add(10);
+q.add(20);
+
+👉 Trick: rotation logic (interviewer checks thinking)
+
+🧠 10. Remove While Iterating (Common Mistake)
+
+Scenario:
+Remove elements from list while iterating.
+
+❌ Wrong:
+
+for (Integer i : list) {
+    list.remove(i); // Exception
+}
+
+✅ Correct:
+
+Iterator<Integer> it = list.iterator();
+while (it.hasNext()) {
+    it.next();
+    it.remove();
+}
+
+👉 Trick: ConcurrentModificationException
+
+🧠 11. Null Handling Trick
+
+Scenario Question:
+Which collections allow null?
+
+👉 Answer:
+
+HashMap → 1 null key ✅
+TreeMap → ❌
+HashSet → 1 null ✅
+TreeSet → ❌
+
+👉 Very common interview trap
+
+🧠 12. Fastest Lookup?
+
+Scenario:
+You need fastest search.
+
+👉 Answer:
+
+HashMap / HashSet → O(1)
+
+👉 Trick: hashing concept
+-------------------------------------------------------------------
+📘 1. ArrayList (AL) – Student Marks System
+import java.util.*;
+
+public class AL_StudentMarks {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> marks = new ArrayList<>();
+
+        System.out.println("Enter number of students:");
+        int n = sc.nextInt();
+
+        System.out.println("Enter marks:");
+        for (int i = 0; i < n; i++) {
+            marks.add(sc.nextInt());
+        }
+
+        // Frequent operation: access by index
+        System.out.println("Marks List: " + marks);
+        System.out.println("Marks of 2nd student: " + marks.get(1));
+
+        // Update
+        marks.set(1, 95);
+        System.out.println("Updated List: " + marks);
+    }
+}
+📘 2. LinkedList (LL) – Browser History
+import java.util.*;
+
+public class LL_Browser {
+    public static void main(String[] args) {
+
+        LinkedList<String> history = new LinkedList<>();
+
+        history.add("Google");
+        history.add("YouTube");
+        history.add("ChatGPT");
+
+        System.out.println("History: " + history);
+
+        // Frequent operation: delete last (back)
+        history.removeLast();
+
+        System.out.println("After Back: " + history);
+    }
+}
+📘 3. Stack – Undo/Redo
+import java.util.*;
+
+public class Stack_Undo {
+    public static void main(String[] args) {
+
+        Stack<String> stack = new Stack<>();
+
+        stack.push("Type A");
+        stack.push("Type B");
+        stack.push("Type C");
+
+        System.out.println("Actions: " + stack);
+
+        // Frequent operation: pop
+        System.out.println("Undo: " + stack.pop());
+
+        System.out.println("After Undo: " + stack);
+    }
+}
+📘 4. HashSet (HS) – Unique Emails
+import java.util.*;
+
+public class HS_Email {
+    public static void main(String[] args) {
+
+        HashSet<String> set = new HashSet<>();
+
+        set.add("a@gmail.com");
+        set.add("b@gmail.com");
+        set.add("a@gmail.com");
+
+        System.out.println("Unique Emails: " + set);
+    }
+}
+📘 5. LinkedHashSet (LHS) – Ordered Unique Logs
+import java.util.*;
+
+public class LHS_Login {
+    public static void main(String[] args) {
+
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+
+        set.add("Login1");
+        set.add("Login2");
+        set.add("Login1");
+
+        System.out.println("Login History: " + set);
+    }
+}
+📘 6. TreeSet (TS) – Leaderboard
+import java.util.*;
+
+public class TS_Leaderboard {
+    public static void main(String[] args) {
+
+        TreeSet<Integer> scores = new TreeSet<>();
+
+        scores.add(300);
+        scores.add(100);
+        scores.add(200);
+
+        System.out.println("Sorted Scores: " + scores);
+
+        // Frequent operation: highest score
+        System.out.println("Top Score: " + scores.last());
+    }
+}
+📘 7. PriorityQueue (PQ) – Task Scheduling
+import java.util.*;
+
+public class PQ_Task {
+    public static void main(String[] args) {
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        pq.add(3);
+        pq.add(1);
+        pq.add(2);
+
+        System.out.println("Tasks: " + pq);
+
+        while (!pq.isEmpty()) {
+            System.out.println("Processing: " + pq.poll());
+        }
+    }
+}
+📘 8. ArrayDeque (ADQ) – Undo/Redo
+import java.util.*;
+
+public class ADQ_UndoRedo {
+    public static void main(String[] args) {
+
+        ArrayDeque<String> dq = new ArrayDeque<>();
+
+        dq.push("A");
+        dq.push("B");
+        dq.push("C");
+
+        System.out.println("Actions: " + dq);
+
+        System.out.println("Undo: " + dq.pop());
+        System.out.println("After Undo: " + dq);
+    }
+}
+📘 9. HashMap (HM) – Student Database
+import java.util.*;
+
+public class HM_StudentDB {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> map = new HashMap<>();
+
+        map.put(101, "Ravi");
+        map.put(102, "Anu");
+
+        System.out.println("Database: " + map);
+
+        // Frequent operation: search
+        System.out.println("Student 101: " + map.get(101));
+    }
+}
+📘 10. LinkedHashMap (LHM) – Cache
+import java.util.*;
+
+public class LHM_Cache {
+    public static void main(String[] args) {
+
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+
+        map.put(1, "A");
+        map.put(2, "B");
+        map.put(3, "C");
+
+        System.out.println("Cache: " + map);
+    }
+}
+📘 11. TreeMap (TM) – Dictionary
+import java.util.*;
+
+public class TM_Dictionary {
+    public static void main(String[] args) {
+
+        TreeMap<String, String> map = new TreeMap<>();
+
+        map.put("Java", "Language");
+        map.put("Apple", "Fruit");
+        map.put("Car", "Vehicle");
+
+        System.out.println("Sorted Dictionary: " + map);
+    }
+}
+📘 12. Hashtable – Thread Safe
+import java.util.*;
+
+public class HT_ThreadSafe {
+    public static void main(String[] args) {
+
+        Hashtable<Integer, String> ht = new Hashtable<>();
+
+        ht.put(1, "A");
+        ht.put(2, "B");
+
+        System.out.println("Hashtable: " + ht);
+    }
+}
