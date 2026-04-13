@@ -47,4 +47,4 @@ class AvgMarks
 		System.out.println(list.isEmpty());
 		
 	}
-}
+} 

@@ -1,0 +1,314 @@
+🔹 1. List (ArrayList / LinkedList)
+4
+✅ Questions:
+Write a program to store student marks in ArrayList and print average
+Remove duplicate elements from a List
+Sort a List using:
+Comparable
+Comparator
+Reverse an ArrayList without using Collections.reverse()
+Find second largest element in a List
+Convert Array → ArrayList and vice versa
+Iterate list using:
+for loop
+iterator
+forEach
+🔹 2. Set (HashSet / TreeSet / LinkedHashSet)
+4
+✅ Questions:
+Remove duplicates using HashSet
+Store elements in TreeSet and print in sorted order
+Find union and intersection of two sets
+Check if a Set contains a specific element
+Convert List → Set → List
+🔹 3. Map (HashMap / TreeMap / LinkedHashMap)
+4
+✅ Questions:
+Count frequency of characters in a String using HashMap
+Iterate Map using:
+keySet()
+entrySet()
+Sort Map by:
+Keys
+Values
+Find highest frequency element
+Check if a key exists
+Merge two HashMaps
+🔹 4. Queue / Deque / PriorityQueue
+4
+✅ Questions:
+Implement Queue using ArrayDeque
+Demonstrate:
+offer()
+poll()
+peek()
+Store elements in PriorityQueue and print in priority order
+Implement Stack using Deque
+Compare remove() vs poll() practically
+🔹 5. Comparable vs Comparator (Very Important)
+✅ Questions:
+Sort Student objects using:
+compareTo() (marks ascending)
+Comparator (marks descending)
+Sort by multiple fields (name + marks)
+Custom sorting (even numbers first, then odd)
+🔹 6. Real-Time Implementation Questions
+✅ Questions:
+Find first non-repeating character in a String
+LRU Cache implementation using LinkedHashMap
+Group words that are anagrams
+Find top K frequent elements
+Check if two arrays are equal ignoring order
+Design a Student Management System using Collections
+🔹 7. Trick / Interview Questions
+✅ Questions:
+Difference between:
+remove() vs poll()
+peek() vs element()
+Why HashMap allows one null key but Hashtable doesn’t?
+Why TreeSet doesn’t allow null?
+What happens if you modify a collection while iterating?
+Fail-fast vs Fail-safe iterator
+🔹 8. Mini Coding Challenges (Must Practice)
+🔸 Example:
+
+👉 Remove duplicates and maintain order:
+
+List<Integer> list = Arrays.asList(1,2,3,2,1,4);
+
+Set<Integer> set = new LinkedHashSet<>(list);
+System.out.println(set);
+🎯 How to Practice (Best Strategy)
+Start with List → Set → Map → Queue
+Practice 2–3 problems daily
+Focus on:
+Logic
+Time complexity
+Real-time usage
+
+If you want, I can:
+✅ 
+Give answers with code for each question
+✅ 
+Conduct a mock interview (Collections only)
+✅ 
+Provide top 20 most asked interview programs
+
+Give me answers with code for each question
+
+Great—let’s turn those questions into working Java programs. I’ll keep each answer short + clear, so you can study and revise easily.
+
+🔹 1. LIST (ArrayList / LinkedList)
+✅ 1. Average of marks
+import java.util.*;
+
+public class AvgMarks {
+    public static void main(String[] args) {
+        ArrayList<Integer> marks = new ArrayList<>(Arrays.asList(50, 60, 70));
+
+        int sum = 0;
+        for (int m : marks) sum += m;
+
+        System.out.println("Average = " + (sum / marks.size()));
+    }
+}
+✅ 2. Remove duplicates
+List<Integer> list = Arrays.asList(1,2,2,3,4,4);
+Set<Integer> set = new LinkedHashSet<>(list);
+System.out.println(set);
+✅ 3. Sort using Comparable
+class Student implements Comparable<Student> {
+    int marks;
+    Student(int m){ marks = m; }
+
+    public int compareTo(Student s) {
+        return this.marks - s.marks; // ascending
+    }
+}
+✅ 4. Reverse ArrayList
+ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,3));
+for(int i=list.size()-1;i>=0;i--)
+    System.out.print(list.get(i)+" ");
+✅ 5. Second largest
+List<Integer> list = Arrays.asList(10,20,30,40);
+Collections.sort(list);
+System.out.println(list.get(list.size()-2));
+✅ 6. Array ↔ List
+// Array to List
+Integer arr[] = {1,2,3};
+List<Integer> list = Arrays.asList(arr);
+
+// List to Array
+Integer arr2[] = list.toArray(new Integer[0]);
+✅ 7. Iteration
+List<Integer> list = Arrays.asList(1,2,3);
+
+// for loop
+for(int i=0;i<list.size();i++) System.out.println(list.get(i));
+
+// iterator
+Iterator<Integer> it = list.iterator();
+while(it.hasNext()) System.out.println(it.next());
+
+// forEach
+list.forEach(System.out::println);
+🔹 2. SET
+✅ 1. Remove duplicates (HashSet)
+Set<Integer> set = new HashSet<>(Arrays.asList(1,2,2,3));
+System.out.println(set);
+✅ 2. TreeSet sorting
+Set<Integer> set = new TreeSet<>(Arrays.asList(5,1,3));
+System.out.println(set);
+✅ 3. Union & Intersection
+Set<Integer> s1 = new HashSet<>(Arrays.asList(1,2,3));
+Set<Integer> s2 = new HashSet<>(Arrays.asList(2,3,4));
+
+// union
+Set<Integer> union = new HashSet<>(s1);
+union.addAll(s2);
+
+// intersection
+Set<Integer> inter = new HashSet<>(s1);
+inter.retainAll(s2);
+✅ 4. Contains
+System.out.println(set.contains(2));
+✅ 5. List → Set → List
+List<Integer> list = Arrays.asList(1,2,2,3);
+Set<Integer> set = new HashSet<>(list);
+List<Integer> newList = new ArrayList<>(set);
+🔹 3. MAP
+✅ 1. Character frequency
+String str = "hello";
+Map<Character,Integer> map = new HashMap<>();
+
+for(char c: str.toCharArray())
+    map.put(c, map.getOrDefault(c,0)+1);
+
+System.out.println(map);
+✅ 2. Iteration
+Map<Integer,String> map = new HashMap<>();
+map.put(1,"A");
+
+// keySet
+for(Integer k: map.keySet())
+    System.out.println(k + " " + map.get(k));
+
+// entrySet
+for(Map.Entry<Integer,String> e: map.entrySet())
+    System.out.println(e.getKey()+" "+e.getValue());
+✅ 3. Sort Map by keys
+Map<Integer,String> map = new TreeMap<>(Map.of(3,"C",1,"A"));
+System.out.println(map);
+✅ 4. Highest frequency element
+Map<Integer,Integer> map = new HashMap<>();
+int arr[] = {1,2,2,3};
+
+for(int n: arr)
+    map.put(n, map.getOrDefault(n,0)+1);
+
+int maxKey = -1, maxVal = 0;
+for(var e: map.entrySet()){
+    if(e.getValue() > maxVal){
+        maxVal = e.getValue();
+        maxKey = e.getKey();
+    }
+}
+System.out.println(maxKey);
+✅ 5. Key exists
+System.out.println(map.containsKey(1));
+✅ 6. Merge Maps
+Map<Integer,String> m1 = new HashMap<>();
+Map<Integer,String> m2 = new HashMap<>();
+
+m1.putAll(m2);
+🔹 4. QUEUE / DEQUE
+✅ 1. Queue using ArrayDeque
+Queue<Integer> q = new ArrayDeque<>();
+q.offer(1);
+q.offer(2);
+System.out.println(q.poll());
+✅ 2. offer, poll, peek
+Queue<Integer> q = new LinkedList<>();
+q.offer(10);
+System.out.println(q.peek()); // 10
+System.out.println(q.poll()); // 10
+✅ 3. PriorityQueue
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+pq.add(3); pq.add(1); pq.add(2);
+
+while(!pq.isEmpty())
+    System.out.println(pq.poll());
+✅ 4. Stack using Deque
+Deque<Integer> stack = new ArrayDeque<>();
+stack.push(1);
+stack.push(2);
+System.out.println(stack.pop());
+✅ 5. remove vs poll
+Queue<Integer> q = new LinkedList<>();
+// q.remove(); // throws exception
+System.out.println(q.poll()); // returns null
+🔹 5. COMPARATOR
+✅ Descending order
+Collections.sort(list, (a,b) -> b - a);
+✅ Multiple fields
+Collections.sort(list, (a,b) -> {
+    if(a.marks == b.marks)
+        return a.name.compareTo(b.name);
+    return b.marks - a.marks;
+});
+🔹 6. REAL-TIME
+✅ First non-repeating character
+String str = "aabbcde";
+Map<Character,Integer> map = new LinkedHashMap<>();
+
+for(char c: str.toCharArray())
+    map.put(c, map.getOrDefault(c,0)+1);
+
+for(var e: map.entrySet()){
+    if(e.getValue()==1){
+        System.out.println(e.getKey());
+        break;
+    }
+}
+✅ Anagrams grouping
+String[] words = {"eat","tea","tan"};
+
+Map<String,List<String>> map = new HashMap<>();
+
+for(String w: words){
+    char ch[] = w.toCharArray();
+    Arrays.sort(ch);
+    String key = new String(ch);
+
+    map.computeIfAbsent(key,k->new ArrayList<>()).add(w);
+}
+System.out.println(map);
+✅ Top K frequent
+int arr[] = {1,1,2,2,2,3};
+Map<Integer,Integer> map = new HashMap<>();
+
+for(int n: arr)
+    map.put(n, map.getOrDefault(n,0)+1);
+
+List<Integer> list = new ArrayList<>(map.keySet());
+list.sort((a,b)-> map.get(b)-map.get(a));
+
+System.out.println(list.subList(0,2));
+🔹 7. TRICK
+✅ Modify while iterating
+List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3));
+
+Iterator<Integer> it = list.iterator();
+while(it.hasNext()){
+    if(it.next()==2)
+        it.remove(); // correct way
+}
+🎯 FINAL TIP
+
+👉 Practice like this:
+
+Day 1: List
+Day 2: Set
+Day 3: Map
+Day 4: Queue
+Day 5: Mixed problems
