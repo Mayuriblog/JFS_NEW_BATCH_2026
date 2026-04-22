@@ -11,6 +11,7 @@ class ADQ_AllOps
 		adq.addLast(9);*/
 		//safe method for insertion 
 		adq.offer(5);
+		adq.offer(3);
 		adq.offer(10);
 		adq.offerFirst(2);
 		adq.offerLast(9);
