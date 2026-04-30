@@ -23,7 +23,7 @@ class MyComparator implements Comparator<Integer>
     }
 }
 
-class Test 
+class TMap_AllOps 
 {
     public static void main(String[] args)
 	{
