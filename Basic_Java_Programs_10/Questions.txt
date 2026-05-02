@@ -1,0 +1,10 @@
+Write a Java program to implement a simple calculator using switch-case.
+Write a Java program to generate a random password of given length.
+Write a Java program to check whether a given string is a palindrome or not.
+Write a Java program to convert temperature from Celsius to Fahrenheit and vice versa.
+Write a Java program to generate Fibonacci series up to n terms.
+Write a Java program to calculate simple interest.
+Write a Java program to check whether a given number is prime or not.
+Write a Java program to print the multiplication table of a given number.
+Write a Java program to calculate student grade based on average marks.
+Write a Java program to implement a number guessing game.
